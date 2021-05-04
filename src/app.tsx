@@ -55,7 +55,7 @@ const App = () => {
                 <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>
                 <pointLight intensity={2} color={'white'} position={[0, 0, 10]}/>
                 <pointLight intensity={2} color={'green'} position={[0, 10, -10]}/>
-                <MovingSphere direction="up" movementSpeed={1} position={[5, 2, -7]}>
+                <MovingSphere direction="up" movementSpeed={1} position={[5, 1.5, -7]}>
                     <sphereGeometry args={[1, 100, 100]} />
                     <meshStandardMaterial color={0x636e72}/>
                 </MovingSphere>

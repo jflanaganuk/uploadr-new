@@ -39,22 +39,31 @@ html, body {
 
     .container {
         .threeCanvas {
-            display: none;
+            width: 100vw !important;
+            height: 200px !important;
+            bottom: 0;
+            z-index: 9999;
+            opacity: 0;
+            animation: 1s fadein 1s ease forwards;
             @media only screen and (min-width: $wide-start) {
-                display: initial;
-                opacity: 0;
-                animation: 1s fadein 1s ease forwards;
+                width: 100% !important;
+                height: 100vh !important;
+                bottom: initial;
+                z-index: 0;
             }
         }
         header {
             background-color: var(--blue);
             height: 60vh;
-            max-height: 500px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            @media only screen and (min-width: $lap-start) {
+                height: 60vh;
+                max-height: 500px;
+            }
             h1 {
                 @media only screen and (min-width: $lap-start) {
                     font-size: 5rem;
