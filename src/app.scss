@@ -22,6 +22,7 @@ $base-spacing: 10px;
 $half-spacing: 5px;
 
 html, body {
+
     margin: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -37,6 +38,14 @@ html, body {
     }
 
     .container {
+        .threeCanvas {
+            display: none;
+            @media only screen and (min-width: $wide-start) {
+                display: initial;
+                opacity: 0;
+                animation: 1s fadein 4s forwards ease;
+            }
+        }
         header {
             background-color: var(--blue);
             height: 60vh;
@@ -56,7 +65,8 @@ html, body {
             }
             h1, h2, h3{
                 position: relative;
-                animation: fadein 1s forwards ease;
+                opacity: 0;
+                animation: 1s fadein 1s forwards ease;
                 z-index: 1;
             }
         }
@@ -66,10 +76,12 @@ html, body {
             background-image: linear-gradient(#2d343600, #2d343600, #b2bec344, #2d343600);
         }
         main, footer {
+            opacity: 0;
+            animation: 1s fadein 2s forwards ease;
             max-width: $wide-start;
             margin: 0 auto;
             padding: $base-spacing;
-            @media only screen and (min-width: $lap-start) {
+            @media only screen and (min-width: $wide-start) {
                 padding: 0;
             }
         }

@@ -9,6 +9,7 @@ import { ExtLink } from "./extLink";
 import { Header } from "./header";
 import { Project } from "./project";
 import { Svg } from "./svg";
+import { Skills } from "./skills";
 
 function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 'down' | 'left' | 'right'; movementSpeed: number}) {
     const mesh = useRef<THREE.Mesh>(null);
@@ -42,16 +43,18 @@ const App = () => {
             <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh', pointerEvents: 'none'}}>
                 <PerspectiveCamera makeDefault position={[0, 0, 0]}/>
                 <ambientLight/>
-                <pointLight position={[10, 10, 10]}/>
-                <MovingSphere direction="up" movementSpeed={10} position={[5, 2, -7]}>
+                <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>
+                <pointLight intensity={2} color={'white'} position={[0, 0, 10]}/>
+                <pointLight intensity={2} color={'green'} position={[0, 10, -10]}/>
+                <MovingSphere direction="up" movementSpeed={1} position={[5, 2, -7]}>
                     <sphereGeometry args={[1, 100, 100]} />
                     <meshStandardMaterial color={0x636e72}/>
                 </MovingSphere>
-                <MovingSphere direction="left" movementSpeed={4} position={[-5, -2, -7]}>
+                <MovingSphere direction="left" movementSpeed={0.4} position={[-5, -2, -7]}>
                     <sphereGeometry args={[0.8, 100, 100]} />
                     <meshStandardMaterial color={0x0984e3}/>
                 </MovingSphere>
-                <MovingSphere direction="right" movementSpeed={10} position={[7, -4, -7]}>
+                <MovingSphere direction="right" movementSpeed={1} position={[7, -4, -7]}>
                     <sphereGeometry args={[3, 100, 100]} />
                     <meshStandardMaterial color={0x6c5ce7}/>
                 </MovingSphere>
@@ -91,12 +94,7 @@ const App = () => {
                 </section>
                 <section>
                     <h1 className="centeredTitle">Skills</h1>
-                    <ul>
-                        <li>This</li>
-                        <li>This</li>
-                        <li>This</li>
-                        <li>This</li>
-                    </ul>
+                    <Skills/>
                 </section>
             </main>
             <footer>
