@@ -1,0 +1,108 @@
+
+:root {
+    --dark-grey: #2d3436;
+    --grey: #636e72;
+    --light-grey: #b2bec3;
+    --white: #dfe6e9;
+
+    --blue: #0984e3;
+    --light-blue: #74b9ff;
+
+    --green: #00b894;
+
+    --purple: #6c5ce7;
+
+    --black: #010101;
+}
+
+$lap-start: 750px;
+$wide-start: 1200px;
+
+$base-spacing: 10px;
+$half-spacing: 5px;
+
+html, body {
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: var(--dark-grey);
+    color: var(--white);
+
+    p {
+        color: var(--light-grey);
+    }
+
+    a {
+        color: var(--white);
+    }
+
+    .container {
+        header {
+            background-color: var(--blue);
+            height: 60vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1 {
+                @media only screen and (min-width: $lap-start) {
+                    font-size: 5rem;
+                }
+            }
+            h1, h2 {
+                margin: 0 auto;
+            }
+            h1, h2, h3{
+                position: relative;
+                animation: fadein 1s forwards ease;
+            }
+        }
+        .centeredTitle {
+            font-size: 3rem;
+            text-align: center;
+            background-image: linear-gradient(#2d343600, #2d343600, #b2bec344, #2d343600);
+        }
+        main, footer {
+            max-width: $wide-start;
+            margin: 0 auto;
+            padding: $base-spacing;
+            @media only screen and (min-width: $lap-start) {
+                padding: 0;
+            }
+        }
+        footer {
+            max-width: initial;
+            background-color: var(--black);
+            padding: $base-spacing;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            a {
+                padding: $half-spacing;
+            }
+            div {
+                display: flex;
+                .svgContainer svg {
+                    width: 20px;
+                    & path {
+                        /* Default fill is set by inline style inside the svg, so important has to be used here */
+                        fill: var(--white) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadein {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

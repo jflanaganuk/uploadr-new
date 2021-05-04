@@ -32,7 +32,8 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                loader: '@svgr/webpack'
+                // loader: '@svgr/webpack'
+                loader: 'raw-loader'
             }
         ]
     },
