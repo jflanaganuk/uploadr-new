@@ -1,20 +1,62 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom";
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera } from '@react-three/drei';
 
 import './app.scss'
 import { Copyright } from "./copyright";
 import { ExtLink } from "./extLink";
+import { Header } from "./header";
 import { Project } from "./project";
 import { Svg } from "./svg";
+
+function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 'down' | 'left' | 'right'; movementSpeed: number}) {
+    const mesh = useRef<THREE.Mesh>(null);
+    useFrame((state, delta) => { 
+        switch (props.direction) {
+            case 'left':
+                return mesh.current.position.x -= Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
+            case 'right':
+                return mesh.current.position.x += Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
+            case 'down':
+                return mesh.current.position.y -= Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
+            case 'up':
+                return mesh.current.position.y += Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
+            default:
+                break;
+        }
+    })
+    return (
+        <mesh
+            {...props}
+            ref={mesh}
+        >
+            {props.children}
+        </mesh>
+    )
+}
 
 const App = () => {
     return (
         <div className="container">
-            <header>
-                <h1>Joshua Flanagan</h1>
-                <h2>Web Developer - Nottingham 🇬🇧</h2>
-                <h3>React | Typescript | Threejs | Rust</h3>
-            </header>
+            <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh', pointerEvents: 'none'}}>
+                <PerspectiveCamera makeDefault position={[0, 0, 0]}/>
+                <ambientLight/>
+                <pointLight position={[10, 10, 10]}/>
+                <MovingSphere direction="up" movementSpeed={10} position={[5, 2, -7]}>
+                    <sphereGeometry args={[1, 100, 100]} />
+                    <meshStandardMaterial color={0x636e72}/>
+                </MovingSphere>
+                <MovingSphere direction="left" movementSpeed={4} position={[-5, -2, -7]}>
+                    <sphereGeometry args={[0.8, 100, 100]} />
+                    <meshStandardMaterial color={0x0984e3}/>
+                </MovingSphere>
+                <MovingSphere direction="right" movementSpeed={10} position={[7, -4, -7]}>
+                    <sphereGeometry args={[3, 100, 100]} />
+                    <meshStandardMaterial color={0x6c5ce7}/>
+                </MovingSphere>
+            </Canvas>
+            <Header/>
             <main>
                 <section>
                     <h1 className="centeredTitle">About Me</h1>
@@ -70,4 +112,4 @@ const App = () => {
     )
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App/>, document.getElementById("root"));

@@ -40,6 +40,7 @@ html, body {
         header {
             background-color: var(--blue);
             height: 60vh;
+            max-height: 500px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -56,6 +57,7 @@ html, body {
             h1, h2, h3{
                 position: relative;
                 animation: fadein 1s forwards ease;
+                z-index: 1;
             }
         }
         .centeredTitle {
