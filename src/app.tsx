@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
@@ -39,6 +39,14 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 
 }
 
 const App = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, []);
+
     return (
         <div className="container">
             <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh', pointerEvents: 'none'}}>

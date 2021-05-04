@@ -112,11 +112,11 @@ html, body {
 
 @keyframes fadein {
     0% {
-        transform: translateY(10px) scale(1.05);
+        transform: translateY(50px);
         opacity: 0;
     }
     100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
         opacity: 1;
     }
 }
