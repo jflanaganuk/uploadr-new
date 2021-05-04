@@ -64,6 +64,5 @@
     "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
     "skipLibCheck": true
   },
-  "include": ["**/*.ts"],
   "exclude": ["cypress", "node_modules"]
 }

@@ -13,7 +13,8 @@ import { Skills } from "./skills";
 
 function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 'down' | 'left' | 'right'; movementSpeed: number}) {
     const mesh = useRef<THREE.Mesh>(null);
-    useFrame((state, delta) => { 
+    useFrame((state) => { 
+        if (!mesh.current) return null;
         switch (props.direction) {
             case 'left':
                 return mesh.current.position.x -= Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
