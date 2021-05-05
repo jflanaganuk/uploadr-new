@@ -1,0 +1,38 @@
+$texts: 'React', 'Typescript', 'ThreeJS', 'Node';
+
+.autoTyper {
+    &::before {
+        content: 'React | Typescript | ThreeJS | Node';
+        animation: spell 15s infinite step-end both;
+    }
+    &::after {
+        content: '';
+        border-left: solid 2px #dfe6e9;
+        margin-left: 0.1em;
+        animation: flash 0.6s infinite alternate linear both;
+    }
+}
+
+@keyframes flash {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes spell {
+    0% {
+        content: '';
+    }
+
+    @for $i from 1 through length($texts) {
+        $text: nth($texts, $i);
+        @for $phase from 0 through 1 {
+            $base: ($i - 1) / length($texts) + (1 / length($texts) * 0.5) * $phase;
+            $step: (1 / str-length($text)) * 0.5;
+            @for $t from 1 through str-length($text) {
+                #{($base + $step * $t * 0.1) * 100}% {
+                    content: str-slice($text, 1, $t * (1 - $phase) + (str-length($text) - $t) * $phase)
+                }
+            }
+        }
+    }
+}
