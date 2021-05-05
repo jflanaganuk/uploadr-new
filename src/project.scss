@@ -13,9 +13,10 @@
 .projectContainer {
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     border-radius: 10px;
 
-    height: 200px;
+    height: 300px;
 
     padding: 20px;
 
@@ -23,6 +24,15 @@
         margin: 0;
         @media only screen and (min-width: 750px) {
             font-size: 4rem;
+        }
+    }
+
+    p {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        @media only screen and (min-width: 750px) {
+            width: 50%;
         }
     }
 }

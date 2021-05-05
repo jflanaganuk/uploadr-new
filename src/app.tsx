@@ -84,11 +84,15 @@ const App = () => {
             <Header/>
             <main>
                 <section>
-                    <h1 className="centeredTitle">About Me</h1>
+                    <div className="centeredTitle">
+                        <h1>About Me</h1>
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis assumenda corrupti laborum beatae nobis iusto amet! Voluptatem provident esse illum quibusdam dolore tempore. Ex doloremque adipisci officiis. Explicabo, sunt.</p>
                 </section>
                 <section>
-                    <h1 className="centeredTitle">Projects</h1>
+                    <div className="centeredTitle">
+                        <h1>Projects</h1>
+                    </div>
                     <Project
                         backgroundImage={'./assets/lofat.png'}
                         title="Lofat"
@@ -115,7 +119,9 @@ const App = () => {
                     />
                 </section>
                 <section>
-                    <h1 className="centeredTitle">Skills</h1>
+                    <div className="centeredTitle">
+                        <h1>Skills</h1>
+                    </div>
                     <Skills/>
                 </section>
             </main>
