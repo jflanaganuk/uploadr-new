@@ -1,0 +1,51 @@
+:root {
+    --dark-grey: #2d3436;
+    --grey: #636e72;
+    --light-grey: #b2bec3;
+    --white: #dfe6e9;
+
+    --blue: #0984e3;
+    --light-blue: #74b9ff;
+
+    --green: #00b894;
+
+    --purple: #6c5ce7;
+
+    --black: #010101;
+}
+
+.navContainer {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background-color: var(--blue);
+    .navInner {
+        font-size: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        @media only screen and (min-width: 750px) {
+            justify-content: flex-end;
+        }
+        padding: 10px;
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            margin: 0 10px;
+            &[target] {
+                display: none;
+                @media only screen and (min-width: 750px) {
+                    display: initial;
+                }
+            }
+        }
+        .svgContainer svg {
+            width: 20px;
+            & path {
+                /* Default fill is set by inline style inside the svg, so important has to be used here */
+                fill: var(--white) !important;
+            }
+        }
+    }
+}

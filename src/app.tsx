@@ -10,6 +10,7 @@ import { Header } from "./header";
 import { Project } from "./project";
 import { Svg } from "./svg";
 import { Skills } from "./skills";
+import { Nav } from "./nav";
 
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
@@ -81,16 +82,17 @@ const App = () => {
                     <sphereGeometry args={[3, 100, 100]} />
                 </MovingSphere>
             </Canvas>
+            <Nav/>
             <Header/>
             <main>
                 <section>
-                    <div className="centeredTitle">
+                    <div className="centeredTitle" id="about-me">
                         <h1>About Me</h1>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis assumenda corrupti laborum beatae nobis iusto amet! Voluptatem provident esse illum quibusdam dolore tempore. Ex doloremque adipisci officiis. Explicabo, sunt.</p>
                 </section>
                 <section>
-                    <div className="centeredTitle">
+                    <div className="centeredTitle" id="projects">
                         <h1>Projects</h1>
                     </div>
                     <Project
@@ -119,7 +121,7 @@ const App = () => {
                     />
                 </section>
                 <section>
-                    <div className="centeredTitle">
+                    <div className="centeredTitle" id="skills">
                         <h1>Skills</h1>
                     </div>
                     <Skills/>
