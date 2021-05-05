@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
@@ -11,8 +11,17 @@ import { Project } from "./project";
 import { Svg } from "./svg";
 import { Skills } from "./skills";
 
-function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 'down' | 'left' | 'right'; movementSpeed: number}) {
+interface CustomSphereProps {
+    direction: 'up' | 'down' | 'left' | 'right';
+    movementSpeed: number;
+    color?: number;
+    hoverColor?: number;
+}
+
+function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) {
     const mesh = useRef<THREE.Mesh>(null);
+    const [hovered, setHovered] = useState(false);
+    const [clicked, setClicked] = useState(false);
     useFrame((state) => { 
         if (!mesh.current) return null;
         switch (props.direction) {
@@ -28,12 +37,19 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & {direction: 'up' | 
                 break;
         }
     })
+    const color = props.color || 0x000000;
+    const hoverColor = props.hoverColor || 0xFFFFFF;
     return (
         <mesh
             {...props}
             ref={mesh}
+            scale={clicked ? Math.random() + 1 : 1}
+            onClick={() => setClicked(!clicked)}
+            onPointerOver={() => setHovered(true)}
+            onPointerOut={() => setHovered(false)}
         >
             {props.children}
+            <meshStandardMaterial color={hovered ? hoverColor : color}/>
         </mesh>
     )
 }
@@ -49,23 +65,20 @@ const App = () => {
 
     return (
         <div className="container">
-            <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh', pointerEvents: 'none'}}>
+            <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh'}}>
                 <PerspectiveCamera makeDefault position={[0, 0, 0]}/>
                 <ambientLight/>
                 <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>
                 <pointLight intensity={2} color={'white'} position={[0, 0, 10]}/>
                 <pointLight intensity={2} color={'green'} position={[0, 10, -10]}/>
-                <MovingSphere direction="up" movementSpeed={1} position={[5, 1.5, -7]}>
+                <MovingSphere direction="up" movementSpeed={1} position={[5, 1.5, -7]} color={0x636e72} hoverColor={0x747f83}>
                     <sphereGeometry args={[1, 100, 100]} />
-                    <meshStandardMaterial color={0x636e72}/>
                 </MovingSphere>
-                <MovingSphere direction="left" movementSpeed={0.4} position={[-5, -2, -7]}>
+                <MovingSphere direction="left" movementSpeed={0.4} position={[-5, -2, -7]} color={0x0984e3} hoverColor={0x1a95f4}>
                     <sphereGeometry args={[0.8, 100, 100]} />
-                    <meshStandardMaterial color={0x0984e3}/>
                 </MovingSphere>
-                <MovingSphere direction="right" movementSpeed={1} position={[7, -4, -7]}>
+                <MovingSphere direction="right" movementSpeed={1} position={[7, -4, -7]} color={0x6c5ce7} hoverColor={0x7d6df8}>
                     <sphereGeometry args={[3, 100, 100]} />
-                    <meshStandardMaterial color={0x6c5ce7}/>
                 </MovingSphere>
             </Canvas>
             <Header/>

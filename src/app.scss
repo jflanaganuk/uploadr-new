@@ -45,6 +45,8 @@ html, body {
             z-index: 9999;
             opacity: 0;
             animation: 1s fadein 1s ease forwards;
+            pointer-events: painted;
+            cursor: pointer;
             @media only screen and (min-width: $wide-start) {
                 width: 100% !important;
                 height: 100vh !important;
@@ -53,7 +55,7 @@ html, body {
             }
         }
         header {
-            background-color: var(--blue);
+            background-image: linear-gradient(var(--blue) 20%, var(--light-blue));
             height: 60vh;
             text-align: center;
             display: flex;
