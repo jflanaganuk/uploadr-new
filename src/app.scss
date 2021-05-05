@@ -21,6 +21,17 @@ $wide-start: 1200px;
 $base-spacing: 10px;
 $half-spacing: 5px;
 
+::-webkit-scrollbar {
+    width: $base-spacing * 2;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--grey);
+    &:hover {
+        background-color: var(--light-grey);
+    }
+}
+
 html, body {
 
     margin: 0;
