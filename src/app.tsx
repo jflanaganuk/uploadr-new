@@ -82,7 +82,6 @@ const App = () => {
                     <sphereGeometry args={[3, 100, 100]} />
                 </MovingSphere>
             </Canvas>
-            <Nav/>
             <Header/>
             <main>
                 <section>

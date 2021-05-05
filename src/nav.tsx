@@ -13,8 +13,12 @@ export const Nav = () => {
         const mainSection = document.querySelector('main');
         document.addEventListener('scroll', () => {
             if (!ref.current || !mainSection) return;
-            if (ref.current.offsetTop >= mainSection.offsetTop) setClassname("darker");
-            if (ref.current.offsetTop < mainSection.offsetTop) setClassname("");
+            console.log(window.pageYOffset, ref.current.offsetTop, mainSection.offsetTop)
+            if (window.pageYOffset >= ref.current.offsetTop) setClassname("blue");
+            if (window.pageYOffset >= mainSection.offsetTop) setClassname("blue darker");
+            
+            if (window.pageYOffset < ref.current.offsetTop) setClassname("");
+            if (window.pageYOffset < mainSection.offsetTop && window.pageYOffset >= ref.current.offsetTop) setClassname("blue");
         })
     }, [])    
 
