@@ -54,6 +54,18 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) 
     )
 }
 
+function MovingCamera (_props: JSX.IntrinsicElements['camera']) {
+    const cameraRef = useRef<THREE.Camera>(null);
+    useFrame((state) => {
+        if (!cameraRef.current) return null;
+        cameraRef.current.position.z += Math.cos(state.clock.elapsedTime) / 400;
+        cameraRef.current.rotateZ(0.0002)
+    })
+    return (
+        <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 0]}/>
+    )
+}
+
 const App = () => {
 
     useEffect(() => {
@@ -66,18 +78,18 @@ const App = () => {
     return (
         <div className="container">
             <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh'}}>
-                <PerspectiveCamera makeDefault position={[0, 0, 0]}/>
+                <MovingCamera/>
                 <ambientLight/>
                 <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>
                 <pointLight intensity={2} color={'white'} position={[0, 0, 10]}/>
                 <pointLight intensity={2} color={'green'} position={[0, 10, -10]}/>
-                <MovingSphere direction="up" movementSpeed={1} position={[5, 1.5, -7]} color={0x636e72} hoverColor={0x747f83}>
+                <MovingSphere direction="up" movementSpeed={1} position={[5, 1.5, -8]} color={0x636e72} hoverColor={0x747f83}>
                     <sphereGeometry args={[1, 100, 100]} />
                 </MovingSphere>
                 <MovingSphere direction="left" movementSpeed={0.4} position={[-5, -2, -7]} color={0x0984e3} hoverColor={0x1a95f4}>
                     <sphereGeometry args={[0.8, 100, 100]} />
                 </MovingSphere>
-                <MovingSphere direction="right" movementSpeed={1} position={[7, -4, -7]} color={0x6c5ce7} hoverColor={0x7d6df8}>
+                <MovingSphere direction="right" movementSpeed={1} position={[7, -4, -6]} color={0x6c5ce7} hoverColor={0x7d6df8}>
                     <sphereGeometry args={[3, 100, 100]} />
                 </MovingSphere>
             </Canvas>
