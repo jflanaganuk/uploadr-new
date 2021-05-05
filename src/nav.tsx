@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ExtLink } from './extLink';
 
 import './nav.scss';
 import { Svg } from './svg';
 
 export const Nav = () => {
+
+    const [classname, setClassname] = useState("");
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const mainSection = document.querySelector('main');
+        document.addEventListener('scroll', () => {
+            if (!ref.current || !mainSection) return;
+            if (ref.current.offsetTop >= mainSection.offsetTop) setClassname("darker");
+            if (ref.current.offsetTop < mainSection.offsetTop) setClassname("");
+        })
+    }, [])    
 
     function smoothScroll(selector: string) {
         const tempDomNode: HTMLDivElement | null = document.querySelector(selector);
@@ -17,7 +29,7 @@ export const Nav = () => {
     }
 
     return (
-        <section className={`navContainer`}>
+        <section ref={ref} className={`navContainer ${classname}`}>
             <nav className="navInner">
                 <a onClick={() => smoothScroll('body')}>Home</a>
                 <a onClick={() => smoothScroll('#about-me')}>About Me</a>
