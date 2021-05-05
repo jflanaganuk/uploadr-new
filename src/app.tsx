@@ -10,7 +10,6 @@ import { Header } from "./header";
 import { Project } from "./project";
 import { Svg } from "./svg";
 import { Skills } from "./skills";
-import { Nav } from "./nav";
 
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
