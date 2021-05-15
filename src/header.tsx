@@ -11,6 +11,7 @@ export const Header = () => {
             <h2>Web Developer - Nottingham 🇬🇧</h2>
             <h3><span className="autoTyper"></span></h3>
             <Nav/>
+            <div className="arrowDown"/>
         </header>
     )
 }

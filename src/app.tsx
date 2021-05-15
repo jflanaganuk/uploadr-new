@@ -10,6 +10,7 @@ import { Header } from "./header";
 import { Project } from "./project";
 import { Svg } from "./svg";
 import { Skills } from "./skills";
+import { AboutMe } from "./aboutMe";
 
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
@@ -99,7 +100,7 @@ const App = () => {
                     <div className="centeredTitle" id="about-me">
                         <h1>About Me</h1>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis assumenda corrupti laborum beatae nobis iusto amet! Voluptatem provident esse illum quibusdam dolore tempore. Ex doloremque adipisci officiis. Explicabo, sunt.</p>
+                    <AboutMe/>
                 </section>
                 <section>
                     <div className="centeredTitle" id="projects">
