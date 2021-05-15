@@ -15,6 +15,7 @@ import { Skills } from "./skills";
 import { AboutMe } from "./aboutMe";
 
 const pop = new Audio('./sounds/pop.mp3');
+const inflate = new Audio('./sounds/inflate.mp3');
 
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
@@ -32,9 +33,9 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) 
         if (!mesh.current) return null;
         if (clicked) {
             if (mesh.current.scale.x < 2) {
-                mesh.current.scale.x += 0.005;
-                mesh.current.scale.y += 0.005;
-                mesh.current.scale.z += 0.005;
+                mesh.current.scale.x += 0.003;
+                mesh.current.scale.y += 0.003;
+                mesh.current.scale.z += 0.003;
             } else {
                 scene.remove(mesh.current)
                 pop.play();
@@ -64,6 +65,14 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) 
                 break;
         }
     })
+    useEffect(() => {
+        if (clicked) {
+            inflate.play()
+        } else {
+            inflate.pause()
+            inflate.currentTime = 0
+        }
+    }, [clicked])
     const color = props.color || 0x000000;
     const hoverColor = props.hoverColor || 0xFFFFFF;
     return (
