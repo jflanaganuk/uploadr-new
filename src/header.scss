@@ -9,6 +9,7 @@ $texts: 'React', 'Typescript', 'ThreeJS', 'Node';
     position: absolute;
     bottom: 40px;
     animation: bounce 1s infinite alternate ease-in-out;
+    cursor: pointer;
 }
 
 .autoTyper {

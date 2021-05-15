@@ -34,6 +34,10 @@ module.exports = {
                 test: /\.svg$/,
                 // loader: '@svgr/webpack'
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.mp3$/,
+                loader: 'file-loader'
             }
         ]
     },

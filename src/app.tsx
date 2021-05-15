@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
+
+import * as THREE from 'three';
 
 import './app.scss'
 import { Copyright } from "./copyright";
@@ -12,6 +14,8 @@ import { Svg } from "./svg";
 import { Skills } from "./skills";
 import { AboutMe } from "./aboutMe";
 
+const pop = new Audio('./sounds/pop.mp3');
+
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
     movementSpeed: number;
@@ -20,11 +24,33 @@ interface CustomSphereProps {
 }
 
 function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) {
+    const { scene } = useThree()
     const mesh = useRef<THREE.Mesh>(null);
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
     useFrame((state) => { 
         if (!mesh.current) return null;
+        if (clicked) {
+            if (mesh.current.scale.x < 2) {
+                mesh.current.scale.x += 0.005;
+                mesh.current.scale.y += 0.005;
+                mesh.current.scale.z += 0.005;
+            } else {
+                scene.remove(mesh.current)
+                pop.play();
+                setClicked(false)
+            }
+        } else {
+            if (mesh.current.scale.x > 1) {
+                mesh.current.scale.x -= 0.05;
+                mesh.current.scale.y -= 0.05;
+                mesh.current.scale.z -= 0.05;
+            } else {
+                mesh.current.scale.x = 1
+                mesh.current.scale.y = 1
+                mesh.current.scale.z = 1
+            }
+        }
         switch (props.direction) {
             case 'left':
                 return mesh.current.position.x -= Math.sin(state.clock.elapsedTime) / (1 / props.movementSpeed * 1000)
@@ -44,10 +70,10 @@ function MovingSphere(props: JSX.IntrinsicElements['mesh'] & CustomSphereProps) 
         <mesh
             {...props}
             ref={mesh}
-            scale={clicked ? Math.random() + 1 : 1}
-            onClick={() => setClicked(!clicked)}
+            onPointerDown={() => setClicked(true)}
+            onPointerUp={() => setClicked(false)}
             onPointerOver={() => setHovered(true)}
-            onPointerOut={() => setHovered(false)}
+            onPointerOut={() => {setHovered(false); setClicked(false)}}
         >
             {props.children}
             <meshStandardMaterial color={hovered ? hoverColor : color}/>
@@ -60,10 +86,10 @@ function MovingCamera (_props: JSX.IntrinsicElements['camera']) {
     useFrame((state) => {
         if (!cameraRef.current) return null;
         cameraRef.current.position.z += Math.cos(state.clock.elapsedTime) / 400;
-        cameraRef.current.rotateZ(0.0002)
+        cameraRef.current.rotateZ(-0.0002)
     })
     return (
-        <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 0]}/>
+        <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 1]}/>
     )
 }
 

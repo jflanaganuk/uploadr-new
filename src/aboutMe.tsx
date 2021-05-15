@@ -1,5 +1,16 @@
 import React from 'react';
 
+import './aboutMe.scss';
+
 export const AboutMe = () => {
-    return <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis assumenda corrupti laborum beatae nobis iusto amet! Voluptatem provident esse illum quibusdam dolore tempore. Ex doloremque adipisci officiis. Explicabo, sunt.</p>
+    return (
+        <div className="aboutMeContainer">
+            <ul>
+                <li>Grew up in nottingham</li>
+                <li>Avid gamer</li>
+                <li>Enjoy guitar</li>
+                <li>Dungeon Master by Day</li>
+            </ul>
+        </div>
+    )
 }
