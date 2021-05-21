@@ -145,7 +145,7 @@ const App = () => {
                         backgroundImage={'./assets/lofat.png'}
                         title="Lofat"
                         description="List of Films and TV - a PWA written using React/TS and The Movie Database API"
-                        href="https://www.uploadr.co.uk/imdbfetch"
+                        href="https://www.uploadr.co.uk/lofat"
                     />
                     <Project
                         backgroundImage={'./assets/trainer.png'}
