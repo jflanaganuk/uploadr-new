@@ -1,0 +1,20 @@
+diff --git a/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js b/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
+index 02b8d61..828a6dd 100644
+--- a/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
++++ b/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
+@@ -6,6 +6,7 @@ import Reconciler from 'react-reconciler';
+ import { unstable_now, unstable_runWithPriority, unstable_IdlePriority } from 'scheduler';
+ import { useAsset } from 'use-asset';
+ import useMeasure from 'react-use-measure';
++import { ResizeObserver } from '@juggle/resize-observer'
+ 
+ var threeTypes = /*#__PURE__*/Object.freeze({
+   __proto__: null
+@@ -1362,6 +1363,7 @@ function Canvas({
+   ...props
+ }) {
+   const [ref, size] = useMeasure({
++    polyfill: ResizeObserver,
+     scroll: true,
+     debounce: {
+       scroll: 50,

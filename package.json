@@ -7,17 +7,20 @@
     "build": "webpack",
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@juggle/resize-observer": "^3.3.1",
     "@react-three/drei": "^4.3.3",
     "@react-three/fiber": "^6.0.19",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
     "@types/three": "^0.127.1",
+    "patch-package": "^6.4.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "three": "^0.128.0"
