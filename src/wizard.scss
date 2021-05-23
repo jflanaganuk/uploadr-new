@@ -1,6 +1,7 @@
 .wizardContainer {
+    width: 100%;
     @media only screen and (min-width: 750px) {
-        width: 500px;
+        max-width: 500px;
     }
 }
 

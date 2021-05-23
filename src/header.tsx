@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav } from './nav';
+import { Nav, smoothScroll } from './nav';
 
 import './header.scss'
 
@@ -11,12 +11,7 @@ export const Header = () => {
             <h2>Web Developer - Nottingham 🇬🇧</h2>
             <h3><span className="autoTyper"></span></h3>
             <Nav/>
-            <div className="arrowDown" onClick={() => {
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                })
-            }}/>
+            <div className="arrowDown" onClick={() => smoothScroll('#about-me')}/>
         </header>
     )
 }

@@ -1,3 +1,12 @@
 .skillsContainer {
     padding-bottom: 50px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    p {
+        padding-left: 20px;
+        width: 30ch;
+    }
 }

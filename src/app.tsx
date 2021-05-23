@@ -104,16 +104,9 @@ function MovingCamera (_props: JSX.IntrinsicElements['camera']) {
 
 const App = () => {
 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }, []);
-
     return (
         <div className="container">
-            <Canvas className="threeCanvas" style={{position: 'fixed', height: '100vh'}}>
+            <Canvas className="threeCanvas" style={{position: 'absolute', height: '100vh'}}>
                 <MovingCamera/>
                 <ambientLight/>
                 <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>

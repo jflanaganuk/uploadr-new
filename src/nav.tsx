@@ -21,16 +21,6 @@ export const Nav = () => {
         })
     }, [])    
 
-    function smoothScroll(selector: string) {
-        const tempDomNode: HTMLDivElement | null = document.querySelector(selector);
-        if (!tempDomNode) return;
-        const rect = tempDomNode.getBoundingClientRect();
-        window.scrollTo({
-            top: rect.top + window.pageYOffset,
-            behavior: 'smooth'
-        })
-    }
-
     return (
         <section ref={ref} className={`navContainer ${classname}`}>
             <nav className="navInner">
@@ -44,4 +34,14 @@ export const Nav = () => {
             </nav>
         </section>
     );
+}
+
+export function smoothScroll(selector: string) {
+    const tempDomNode: HTMLDivElement | null = document.querySelector(selector);
+    if (!tempDomNode) return;
+    const rect = tempDomNode.getBoundingClientRect();
+    window.scrollTo({
+        top: rect.top + window.pageYOffset,
+        behavior: 'smooth'
+    })
 }
