@@ -30,7 +30,7 @@ export const Nav = () => {
                 <a onClick={() => smoothScroll('#skills')}>Skills</a>
                 <ExtLink href="https://twitter.com/jflagg93"><Svg variant="twitter"/></ExtLink>
                 <ExtLink href="https://github.com/jflanaganuk"><Svg variant="github"/></ExtLink>
-                <ExtLink href="https://linkedin.com"><Svg variant="linkedin"/></ExtLink>
+                <ExtLink href="https://www.linkedin.com/in/joshua-flanagan-172636213/"><Svg variant="linkedin"/></ExtLink>
             </nav>
         </section>
     );
