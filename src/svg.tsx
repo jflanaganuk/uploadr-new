@@ -6,9 +6,15 @@ import twitter from './svgs/twitter.svg';
 import github from './svgs/github.svg';
 //@ts-ignore
 import linkedin from './svgs/linkedin.svg';
+//@ts-ignore
+import node from './svgs/node.svg';
+//@ts-ignore
+import react from './svgs/react.svg';
+//@ts-ignore
+import storybook from './svgs/storybook.svg';
 
 interface SvgProps {
-    variant: "twitter" | "github" | "linkedin";
+    variant: string;
     className?: string;
 }
 
@@ -21,6 +27,12 @@ export const Svg = (props: SvgProps) => {
                 return github;
             case "linkedin":
                 return linkedin;
+            case "node":
+                return node;
+            case "react":
+                return react;
+            case "storybook":
+                return storybook;
             default:
                 return null;
         }

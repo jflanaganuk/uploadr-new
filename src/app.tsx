@@ -137,26 +137,120 @@ const App = () => {
                     <Project
                         backgroundImage={'./assets/lofat.png'}
                         title="Lofat"
-                        description="List of Films and TV - a PWA written using React/TS and The Movie Database API"
+                        description="A PWA written using React/TS and The Movie Database API, uses custom built caching on the backend as well as the service worker to try and achieve maximum performance in lighthouse"
                         href="https://www.uploadr.co.uk/lofat"
+                        images={[
+                            {
+                                src: "react",
+                                alt: "React Logo",
+                                type: "svg"
+                            },
+                            {
+                                src: "./assets/typescript.jpg",
+                                alt: "Typescript Logo",
+                                type: "img"
+                            },
+                            {
+                                src: "node",
+                                alt: "Node Logo",
+                                type: "svg"
+                            },
+                            {
+                                src: "./assets/express.png",
+                                alt: "Express Logo",
+                                type: "img",
+                                inverted: true
+                            },
+                            {
+                                src: "./assets/htmlcssjs.png",
+                                alt: "Html CSS & JS Logo",
+                                type: "img"
+                            },
+                        ]}
                     />
                     <Project
                         backgroundImage={'./assets/trainer.png'}
                         title="Trainer - Three JS"
-                        description="Example of Three JS with raycasted informaion bubbles, material of the trainer can be changed - using Shopify's Trainer model"
+                        description="Example of using Three JS to render a product. The numbered circles can be hovered to reveal extra information and the model can be rotated completely around its axis. Material of the trainer can be changed - using Shopify's Trainer model"
                         href="https://www.uploadr.co.uk/trainer"
+                        images={[
+                            {
+                                src: "./assets/threejs.png",
+                                alt: "ThreeJS Logo",
+                                type: "img",
+                                inverted: true
+                            }
+                        ]}
                     />
                     <Project
                         backgroundImage={'./assets/phaseronline.png'}
                         title="Phaser Online"
-                        description="A proof of concept for using the framework 'Phaser' on a server with JSDom, this allows for creating multiplayer games much easier (open the link in multiple tabs to see)"
+                        description="A proof of concept for using the framework 'Phaser' on a server with JSDom, this allows for creating multiplayer games much easier (open the link in multiple tabs to see). Client controls movement commands and rendering, server handles actual movement and collisions"
                         href="http://www.uploadr.co.uk:9090"
+                        images={[
+                            {
+                                src: "./assets/phaser.png",
+                                alt: "Phaser Logo",
+                                type: "img"
+                            },
+                            {
+                                src: "react",
+                                alt: "React Logo",
+                                type: "svg"
+                            },
+                            {
+                                src: "./assets/typescript.jpg",
+                                alt: "Typescript Logo",
+                                type: "img"
+                            },
+                            {
+                                src: "node",
+                                alt: "Node Logo",
+                                type: "svg"
+                            },
+                        ]}
                     />
                     <Project
                         backgroundImage={'./assets/storybook.png'}
                         title="Documentation with Storybook"
-                        description="Playing DND with a program called Foundry VTT, we found it useful to have a place for documentation on how to use the software. This was built with Storybook"
+                        description="Playing DND with a program called Foundry VTT, we found it useful to have a place for documentation on how to use the software. This was built with Storybook and the theme customised per their spec."
                         href="https://www.uploadr.co.uk/foundryhelp"
+                        images={[
+                            {
+                                src: "storybook",
+                                alt: "Storybook Logo",
+                                type: "svg"
+                            }
+                        ]}
+                    />
+                    <Project
+                        backgroundImage={'./assets/blog.png'}
+                        title="Blog"
+                        description="A blog created with express and markdown to write down thoughts I have and post (hopefully) useful tutorials"
+                        href="https://www.uploadr.co.uk/blog"
+                        images={[
+                            {
+                                src: "node",
+                                alt: "Node Logo",
+                                type: "svg"
+                            },
+                            {
+                                src: "./assets/express.png",
+                                alt: "Express Logo",
+                                type: "img",
+                                inverted: true
+                            },
+                            {
+                                src: "./assets/markdown.jpg",
+                                alt: "Markdown Logo",
+                                type: "img"
+                            },
+                            {
+                                src: "./assets/htmlcssjs.png",
+                                alt: "Html CSS & JS Logo",
+                                type: "img"
+                            },
+                        ]}
                     />
                 </section>
                 <section>
