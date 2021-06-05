@@ -1,6 +1,8 @@
 import React from 'react';
 
-import './aboutMe.scss';
+if (process.env.BROWSER) {
+    require('./aboutMe.scss');
+}
 import { Wizard } from './wizard';
 
 export const AboutMe = () => {

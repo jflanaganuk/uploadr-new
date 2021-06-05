@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ExtLink } from './extLink';
 
-import './nav.scss';
+if (process.env.BROWSER) {
+    require('./nav.scss');
+}
 import { Svg } from './svg';
 
 export const Nav = () => {

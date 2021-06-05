@@ -1,17 +1,15 @@
 import React from 'react';
 
-//@ts-ignore
-import twitter from './svgs/twitter.svg';
-//@ts-ignore
-import github from './svgs/github.svg';
-//@ts-ignore
-import linkedin from './svgs/linkedin.svg';
-//@ts-ignore
-import node from './svgs/node.svg';
-//@ts-ignore
-import react from './svgs/react.svg';
-//@ts-ignore
-import storybook from './svgs/storybook.svg';
+let twitter, github, linkedin, node, react, storybook;
+
+if (process.env.BROWSER) {
+    twitter = require('./svgs/twitter.svg');
+    github = require('./svgs/github.svg');
+    linkedin = require('./svgs/linkedin.svg');
+    node = require('./svgs/node.svg');
+    react = require('./svgs/react.svg');
+    storybook = require('./svgs/storybook.svg');
+} 
 
 interface SvgProps {
     variant: string;
@@ -37,5 +35,6 @@ export const Svg = (props: SvgProps) => {
                 return null;
         }
     })();
-    return <div className={`svgContainer ${props.className}`} dangerouslySetInnerHTML={{__html: svg}}/>
+    if (!svg) return null;
+    return <div className={`svgContainer ${props.className}`} dangerouslySetInnerHTML={{__html: svg.default}}/>
 }
