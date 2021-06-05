@@ -8,7 +8,8 @@
     "start": "webpack serve",
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "serve": "ts-node serve.tsx"
   },
   "keywords": [],
   "author": "",
@@ -20,10 +21,12 @@
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
     "@types/three": "^0.127.1",
+    "express": "^4.17.1",
     "patch-package": "^6.4.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "three": "^0.128.0"
+    "three": "^0.128.0",
+    "ts-node": "^10.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",

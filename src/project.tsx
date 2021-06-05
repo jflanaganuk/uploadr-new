@@ -1,7 +1,9 @@
 import React from 'react';
 import { ExtLink } from './extLink';
 
-import './project.scss';
+if (process.env.BROWSER) {
+    require('./project.scss');
+}
 import { Svg } from './svg';
 
 interface ProjectProps {
@@ -39,9 +41,9 @@ export const Project = (props: ProjectProps) => {
                 <h1>{props.title}</h1>
                 <p>{props.description}</p>
                 <div className="projectImageContainer">
-                {props.images.map(image => {
-                    if (image.type === "img" ) return <img className={`projectImage ${image.inverted && "projectImageInvert"}`} src={image.src} alt={image.alt}/>
-                    return <Svg className="projectImageSvg" variant={image.src}/>
+                {props.images.map((image, index) => {
+                    if (image.type === "img" ) return <img key={`${image.alt}${index}`} className={`projectImage ${image.inverted && "projectImageInvert"}`} src={image.src} alt={image.alt}/>
+                    return <Svg key={`${image.alt}${index}`} className="projectImageSvg" variant={image.src}/>
                 })}
                 </div>
             </div>

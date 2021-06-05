@@ -1,6 +1,8 @@
 import React from 'react';
 
-import './skills.scss';
+if (process.env.BROWSER) {
+    require('./skills.scss');
+}
 
 export const Skills = () => {
     return (

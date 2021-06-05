@@ -1,7 +1,9 @@
 import React from 'react';
 import { Nav, smoothScroll } from './nav';
 
-import './header.scss'
+if (process.env.BROWSER) {
+    require('./header.scss');
+}
 
 export const Header = () => {
 

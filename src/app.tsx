@@ -5,7 +5,6 @@ import { PerspectiveCamera } from '@react-three/drei';
 
 import * as THREE from 'three';
 
-import './app.scss'
 import { Copyright } from "./copyright";
 import { ExtLink } from "./extLink";
 import { Header } from "./header";
@@ -14,8 +13,12 @@ import { Svg } from "./svg";
 import { Skills } from "./skills";
 import { AboutMe } from "./aboutMe";
 
-const pop = new Audio('./sounds/pop.mp3');
-const inflate = new Audio('./sounds/inflate.mp3');
+let pop, inflate;
+if (process.env.BROWSER) {
+    require('./app.scss')
+    pop = new Audio('./sounds/pop.mp3');
+    inflate = new Audio('./sounds/inflate.mp3');
+}
 
 interface CustomSphereProps {
     direction: 'up' | 'down' | 'left' | 'right';
@@ -106,7 +109,7 @@ const App = () => {
 
     return (
         <div className="container">
-            <Canvas className="threeCanvas" style={{position: 'absolute', height: '100vh'}}>
+            <Canvas className="threeCanvas" style={{position: 'absolute', height: '100vh', overflowY: 'auto'}}>
                 <MovingCamera/>
                 <ambientLight/>
                 <pointLight intensity={1} color={'blue'} position={[0, -10, -10]}/>
@@ -273,4 +276,9 @@ const App = () => {
     )
 };
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+export default App;
+
+if (process.env.BROWSER) {
+    document.querySelector('#ssrWrapper')?.remove();
+    ReactDOM.render(<App/>, document.querySelector("#root"));
+}
